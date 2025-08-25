@@ -20,13 +20,10 @@ main {
   justify-content: space-between;
 }
 
-
 .main {
   flex: 1;
-
 }
 
-/* ************************************** */
 .page {
   height: calc(100vh - 140px);
 }
@@ -47,7 +44,6 @@ main {
 
 }
 
-
 .userPage {
   background-color: #dfe6ed;
   display: grid;
@@ -63,7 +59,6 @@ main {
 }
 
 .transactionsTable {
-  /* border: 1px solid red; */
   height: 100%;
   padding: 150px 50px 30px 50px;
 }
@@ -81,6 +76,7 @@ main {
   align-items: center;
   padding: 0 25px;
   cursor: pointer;
+  flex-wrap: wrap;
 }
 
 .userAccount-details {
@@ -114,62 +110,119 @@ main {
   font-size: 1.2rem;
 }
 
-.update-username {
+@media (max-width: 520px) {
+  .userAccount {
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+    flex-direction: row;
+  }
 
+  .userAccount-details,
+  .userTransaction-details,
+  .userAccount-balance {
+    font-size: 0.70rem;
+  }
+
+  .userAccount-balance {
+    font-size: 1.4rem;
+    margin-top: 8px;
+  }
+
+  .userAccount-button {
+    font-size: 1rem;
+    padding: 10px;
+    text-align: center;
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 425px) {
+  .userAccount {
+    gap: 19px;
+  }
+}
+
+@media (max-width: 375px) {
+  .userAccount {
+    gap: 9px;
+    margin-top: -20px;
+  }
+
+  .userAccount-details {
+    text-align: center;
+  }
+
+  .userAccount-actions {
+    margin-top: -20px;
+    padding: 10px 10px 20px 10px;
+  }
+
+  .userAccount-button {
+    font-size: 0.8rem;
+  }
+}
+
+.update-username {
   padding: 10px 20px;
 }
 
 .welcomeTitle {
   font-size: 1.8rem;
   color: #283846;
+  text-align: center;
 }
 
 .input-group {
-  /* border: 1px solid red; */
-  height: 40px;
-  margin-bottom: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 24px;
+  margin-bottom: 25px;
+  flex-wrap: wrap; 
 }
 
 .input {
-  height: 100%;
-  width: 247px;
+  flex: 1; 
+  min-width: 200px;
+  max-width: 300px;
+  height: 40px;
   border: 3px solid #c7d7e7;
   border-radius: 5px;
-  padding: 0 5px;
-  font-size: 1.1rem;
+  padding: 0 10px;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .input::placeholder {
   color: #dfe6ed;
-  padding-left: 5px;
 }
 
 .button-group {
-  /* border: 1px solid red;  */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
-  height: 35px;
-
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 15px;
 }
 
 .updateButton {
-  height: 100%;
   border: 2px solid #6558f696;
   border-radius: 5px;
-  padding: 5px 20px;
-  width: 120px;
+  padding: 8px 16px;
+  min-width: 100px;
   background-color: #fff;
   color: #6458f6;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.updateButton:hover {
+  background-color: #6458f6;
+  color: #fff;
 }
 
 .MybankAccount {
@@ -179,11 +232,45 @@ main {
   justify-content: center;
   text-align: center;
   background-color: #fff;
-  height: 128px;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  flex: 1;
 }
 
+@media (max-width: 768px) {
+  .welcomeTitle {
+    font-size: 1.5rem;
+  }
 
-/* articles */
+  .input-group {
+    gap: 12px;
+  }
+
+  .input {
+    padding: 6px 10px;
+  }
+
+  .button-group {
+    gap: 12px;
+  }
+
+  .updateButton {
+    width: 40%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .welcomeTitle {
+    font-size: 1.3rem;
+  }
+
+  .input {
+    padding: 6px 10px;
+    min-width: 100%;
+  }
+}
+
 .transaction {
   border: 2px solid #c7d7e7;
   background-color: #fff;
@@ -191,6 +278,7 @@ main {
   color: #3d6384;
   font-size: 1.2rem;
 }
+
 
 .transactionHeader {
   height: 100%;
@@ -263,6 +351,46 @@ main {
 
 .transactionInputs.closed {
   animation: collapse 0.3s ease-in-out forwards;
+}
+
+@media (max-width: 768px) {
+  .transactionsTable {
+    margin-top: -120px;
+  }
+
+  .table__title {
+    font-size: 0.90rem;
+  }
+
+  .transactionDate, .transactionDescription, .transactionAmount, .transactionBalance {
+    font-size: 0.95rem;
+  }
+
+  .text-input {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .transactionHeader { padding: 12px; }
+  .transactionIcon {
+    font-size: 1.6rem;
+    height: 26px;
+    width: 26px;
+    margin-right: 8px;
+  }
+
+  .transactionDetails {
+    gap: 12px;
+    padding: 0 12px 12px;
+  }
+  .transactionInputs {
+    padding: 8px 12px 12px 36px;
+  }
+
+  .table__title { font-size: 0.8rem; }
+  .transactionDate, .transactionDescription, .transactionAmount, .transactionBalance,
+  .text-input { font-size: 0.85rem; }
 }
 
 .tr {

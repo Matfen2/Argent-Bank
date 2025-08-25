@@ -27,14 +27,14 @@ const Articles = () => {
           open ? "transactionInputs open" : "transactionInputs closed"
         }
       >
-        <p>
+        <p className="text-input">
           Transaction Type:
           <input type="text" className="transactionTypeInput" />
         </p>
-        <p>
+        <p className="text-input">
           Category: <input type="text" className="transactionCategoryInput" />
         </p>
-        <p>
+        <p className="text-input">
           Notes: <input type="text" className="transactionNotesInput" />
         </p>
       </div>
