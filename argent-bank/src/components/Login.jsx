@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginStart, loginSuccess, loginFailure } from "../utils/slices/authSlice";
-import { API_ENDPOINTS } from "../config/api"; 
+import { API_ENDPOINTS } from "../config/api.js"; 
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -14,6 +14,9 @@ const Login = () => {
   const { loading, error } = useSelector((state) => state.auth);
   const userState = useSelector((state) => state.user || {});
   const { profile } = userState;
+
+  console.log('API_BASE_URL:', import.meta.env.VITE_API_URL);
+  console.log('LOGIN ENDPOINT:', API_ENDPOINTS.LOGIN);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
