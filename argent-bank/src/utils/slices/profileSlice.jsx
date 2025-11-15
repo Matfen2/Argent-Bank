@@ -1,25 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import { API_ENDPOINTS } from "../../config/api"; 
 
 export const fetchUserProfile = createAsyncThunk(
   "user/fetchUserProfile",
   async (_, { getState, rejectWithValue }) => {
-    const token = getState().auth.token || localStorage.getItem("token"); // Vérifie le token
+    const token = getState().auth.token || localStorage.getItem("token");
 
     if (!token) return rejectWithValue("Aucun token trouvé");
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/v1/user/profile",
-        {}, // Certaines API nécessitent un body vide
+        API_ENDPOINTS.PROFILE, 
+        {},
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Envoi du token dans les headers
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      return response.data.body; // Récupération du profil
+      return response.data.body;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Erreur serveur");
     }
@@ -32,7 +32,7 @@ export const updateUserProfile = createAsyncThunk(
     try {
       const token = getState().auth.token;
       const response = await axios.put(
-        "http://localhost:3001/api/v1/user/profile",
+        API_ENDPOINTS.PROFILE, 
         { firstName, lastName },
         {
           headers: {
@@ -40,7 +40,7 @@ export const updateUserProfile = createAsyncThunk(
           },
         }
       );
-      return response.data.body; // Retourne le profil mis à jour
+      return response.data.body;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
